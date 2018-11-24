@@ -1,0 +1,39 @@
+
+Data:
+
+run005.root for gamma source
+run006.root for alpha source
+
+../StdPulse/hist5.root -- std. pulse for gamma
+../StdPulse/hist6.root -- std. pulse for alpha
+
+
+../AreaVsSI/hist5.root -- 2D histgram for projectiron
+../AreaVsSI/hist6.root
+
+Macro:
+
+drawFit.C -- create specrum.root
+spectrum.root -- histgram of integral of charge;
+gammaFit.C -- for fitting Cs-137 peak, and to obtain cal. fac
+
+drawSpectrum.C  -- Draw energy spectra
+makeStdPulse.C -- Make std. pulses
+calcShapeIndicator.C -- Using std. pulse, calc SI
+
+fraction.C -- calc remaining fraction using SI
+```
+$root fraction.C > fra5.dat
+```
+Then, create as follows,
+fra5.dat
+fra6.dat
+Their header and footer should be deleted
+DrawFrac.C -- Draw fra5.dat and fra6.dat
+
+projSI.C -- make projection
+
+useDiffGate.C
+runVariousGates.C -- create hists in various gates
+diffGateHists/ --data files directory
+e.g., gate(runnum)-(xxxxxx gate(ns)).root
